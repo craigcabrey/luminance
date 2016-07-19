@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/craigcabrey/luminance">
+    <file>icons/16x16.png</file>
+    <file>icons/32x32.png</file>
+    <file>icons/48x48.png</file>
+    <file>icons/64x64.png</file>
+    <file>icons/128x128.png</file>
+    <file>icons/256x256.png</file>
+    <file>icons/512x512.png</file>
+    <file>ui/about.ui</file>
+    <file>ui/bridge.ui</file>
+    <file>ui/connect.ui</file>
+    <file>ui/entity.ui</file>
+    <file>ui/groups.ui</file>
+    <file>ui/lights.ui</file>
+    <file>ui/main.ui</file>
+    <file>ui/menu.ui</file>
+    <file>ui/new-group.ui</file>
+  </gresource>
+</gresources>

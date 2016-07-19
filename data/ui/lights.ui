@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkBox" id="lights-page-content">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_start">50</property>
+    <property name="margin_end">50</property>
+    <property name="margin_top">12</property>
+    <property name="margin_bottom">12</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkFrame" id="lights-page-frame">
+        <property name="visible">False</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="margin_bottom">12</property>
+        <property name="shadow_type">none</property>
+        <property name="label_yalign">0.45</property>
+        <child>
+          <object class="GtkFrame" id="lights-page-frame-listbox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">12</property>
+            <property name="shadow_type">in</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListBox" id="lights-list">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="selection_mode">none</property>
+    <signal name="row-activated" handler="_on_row_activated" swapped="no"/>
+  </object>
+</interface>
