@@ -9,7 +9,6 @@
     <property name="copyright" translatable="yes">Copyright © 2016 Craig Cabrey</property>
     <property name="website">https://craigcabrey.github.io/luminance/</property>
     <property name="authors">Craig Cabrey</property>
-    <property name="logo_icon_name">media-optical</property>
     <property name="license_type">gpl-2-0</property>
     <child internal-child="vbox">
       <object class="GtkBox">

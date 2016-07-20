@@ -10,7 +10,8 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 if os.path.exists(os.path.join(os.path.dirname(__file__), '../luminance')):
-    sys.path.append(
+    sys.path.insert(
+        0,
         os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     )
 
