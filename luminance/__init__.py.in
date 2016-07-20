@@ -6,12 +6,27 @@ from gi.repository import Gio
 here = os.path.abspath(os.path.dirname(__file__))
 
 RESOURCE_PREFIX = '/com/craigcabrey/luminance'
-__version__ = '0.1.0'
+__version__ = '@version@'
 
 if os.path.exists(os.path.join(here, '../data')):
+    print('Using local data')
+
     DATA_DIR = os.path.abspath(os.path.join(here, '../data'))
+    settings = Gio.Settings.new_full(
+        Gio.SettingsSchemaSource.new_from_directory(
+            DATA_DIR,
+            Gio.SettingsSchemaSource.get_default(),
+            True
+        ).lookup(
+            'com.craigcabrey.luminance',
+            False
+        ),
+        None,
+        None
+    )
 else:
-    DATA_DIR = os.path.join(sys.prefix, 'share/luminance')
+    DATA_DIR = '@datadir@'
+    settings = Gio.Settings('com.craigcabrey.luminance')
 
 Gio.Resource._register(
     Gio.Resource.load(
@@ -30,5 +45,6 @@ def get_resource_path(resource):
     )
 
 del here
+del Gio
 del os
 del sys

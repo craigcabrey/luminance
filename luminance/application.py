@@ -12,6 +12,7 @@ import phue
 
 from . import __version__
 from . import get_resource_path
+from . import settings
 from .views.window import Window
 
 

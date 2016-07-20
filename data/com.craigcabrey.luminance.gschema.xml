@@ -1,0 +1,18 @@
+<schemalist>
+  <schema id="com.craigcabrey.luminance" path="/com/craigcabrey/luminance/" gettext-domain="luminance">
+    <key name="host" type="s">
+      <default>""</default>
+      <summary>Philips Hue bridge host address</summary>
+      <description>
+        Host address of the Philips Hue bridge to use.
+      </description>
+    </key>
+    <key name="username" type="s">
+      <default>""</default>
+      <summary>Philips Hue bridge username</summary>
+      <description>
+        Username to use for authentication with the Philips Hue bridge.
+      </description>
+    </key>
+  </schema>
+</schemalist>
