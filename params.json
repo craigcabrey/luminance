@@ -1,0 +1,6 @@
+{
+  "name": "Luminance",
+  "tagline": "A Philips Hue client for Linux written in Python and GTK+.",
+  "body": "<p align=\"center\">\r\n  <img src=\"https://raw.githubusercontent.com/craigcabrey/luminance/master/screenshot.png\" alt=\"Screenshot of lights interface\">\r\n</p>\r\n\r\nLuminance is a client for the [Philips Hue](http://meethue.com) lighting system. Its aim is to be beautiful and easy to use yet offer all of the functionality that the Hue system has to offer.\r\n\r\n## Installation\r\n\r\nIf you're just looking to use Luminance, you'll want to install from distribution packages. Currently, Luminance is available from the following distributions:\r\n\r\n* None yet, AUR package will be available shortly\r\n\r\n### Problems\r\n\r\nIf you are having a problem, please [report an issue](https://github.com/craigcabrey/luminance/issues) detailing your environment as much as possible (Distribution, Python version, GTK version, traceback if any, etc).\r\n\r\n### Contributing\r\n\r\nPull requests are always welcome. Head over to the [GitHub](https://github.com/craigcabrey/luminance) to get started.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
