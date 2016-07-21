@@ -23,29 +23,7 @@ class Window(Gtk.ApplicationWindow):
 
         GLib.set_application_name('Luminance')
         self.set_position(Gtk.WindowPosition.CENTER)
-        self.set_default_icon_list([
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/16x16.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/32x32.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/48x48.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/64x64.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/128x128.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/256x256.png')
-            ),
-            GdkPixbuf.Pixbuf.new_from_resource(
-                get_resource_path('icons/512x512.png')
-            )
-        ])
+        self.set_icon_name('luminance')
 
         builder = Gtk.Builder()
         builder.add_from_resource(get_resource_path('ui/main.ui'))

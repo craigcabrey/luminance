@@ -1,4 +1,4 @@
-# ![icon](https://raw.githubusercontent.com/craigcabrey/luminance/master/data/icons/48x48.png) Luminance
+# ![icon](https://raw.githubusercontent.com/craigcabrey/luminance/master/data/icons/hicolor/48x48/apps/luminance.png) Luminance
 
 Luminance is a Philips Hue client for Linux written in Python and GTK+.
 

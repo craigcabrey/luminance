@@ -144,7 +144,7 @@ class Application(Gtk.Application):
         self.connect_dialog.hide()
 
     def _on_about(self, action, param):
-        self.about_dialog.set_logo(self.window.get_default_icon_list()[4])
+        self.about_dialog.set_logo_icon_name('luminance')
         self.about_dialog.set_version(__version__)
         self.about_dialog.set_transient_for(self.window)
         self.about_dialog.set_modal(True)
