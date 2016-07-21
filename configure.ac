@@ -1,6 +1,6 @@
 AC_PREREQ([2.69])
 AC_INIT([luminance],
-        [0.1.0],
+        m4_esyscmd(echo -n `git describe --always --tags`),
         [https://github.com/craigcabrey/luminance/issues],
         [luminance],
         [https://craigcabrey.github.io/luminance/])
