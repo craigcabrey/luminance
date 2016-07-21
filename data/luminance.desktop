@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Luminance
+Comment=A Philips Hue client written in Python and GTK+
+Icon=luminance
+Exec=luminance
+Terminal=false
+Categories=GTK;GNOME

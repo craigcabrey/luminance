@@ -3,6 +3,9 @@ resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --sourc
 resources.gresource: resources.xml $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --sourcedir=$(builddir) $<
 
+desktopdir = $(datadir)/applications
+desktop_DATA = luminance.desktop
+
 resourcedir = $(pkgdatadir)
 resource_DATA = resources.gresource
 
@@ -54,6 +57,7 @@ gschemas.compiled: $(gsettings_SCHEMAS) Makefile
 EXTRA_DIST = \
 	$(hicolor_icon_files) \
 	$(resource_files) \
+	luminance.desktop \
 	resources.xml \
 	com.craigcabrey.luminance.gschema.xml \
 	$(NULL)
