@@ -1,11 +1,14 @@
 import gi
 
+gi.require_version('Gdk', '3.0')
 gi.require_version('Gtk', '3.0')
 
+from gi.repository import Gdk
 from gi.repository import Gtk
 
 from .. import get_resource_path
 from .entity import Entity
+from .light import Light
 
 class Lights(Gtk.Box):
     def __init__(self, bridge, *args, **kwargs):
@@ -27,4 +30,9 @@ class Lights(Gtk.Box):
         self.add(self.content)
 
     def _on_row_activated(self, listbox, row):
-        print('not implemented')
+        Light(
+            row.model,
+            modal=True,
+            transient_for=self.get_toplevel(),
+            type_hint=Gdk.WindowTypeHint.DIALOG
+        ).present()

@@ -15,7 +15,7 @@ class Entity(Gtk.ListBoxRow):
     def __init__(self, model, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.model = model
+        self._model = model
 
         builder = Gtk.Builder()
         builder.add_from_resource(get_resource_path('ui/entity.ui'))
@@ -72,6 +72,10 @@ class Entity(Gtk.ListBoxRow):
         self.grid.attach(self.switch, 14, 0, 1, 2)
 
         self.add(self.grid)
+
+    @property
+    def model(self):
+        return self._model
 
     def _on_color_toggle(self, *args):
         if self.color_chooser_button.get_active():

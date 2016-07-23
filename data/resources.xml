@@ -6,6 +6,7 @@
     <file>ui/connect.ui</file>
     <file>ui/entity.ui</file>
     <file>ui/groups.ui</file>
+    <file>ui/light.ui</file>
     <file>ui/lights.ui</file>
     <file>ui/main.ui</file>
     <file>ui/menu.ui</file>
