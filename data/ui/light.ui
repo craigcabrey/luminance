@@ -2,7 +2,7 @@
 <interface>
   <object class="GtkAdjustment" id="brightness-scale-adjustment">
     <property name="lower">1</property>
-    <property name="upper">254</property>
+    <property name="upper">255</property>
     <property name="step_increment">1</property>
   </object>
   <object class="GtkHeaderBar" id="headerbar">

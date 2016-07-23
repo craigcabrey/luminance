@@ -47,6 +47,7 @@ class Light(Gtk.Window):
 
         self.light_switch = builder.get_object('light-switch')
         self.light_switch.set_state(self.model.on)
+        self.light_switch.emit('state-set', self.model.on)
 
         self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.set_titlebar(headerbar)
@@ -68,7 +69,7 @@ class Light(Gtk.Window):
         self.model.alert = 'select'
 
     def _on_brightness_scale_change(self, scale, delta, value):
-        value = int(min(value, 254))
+        value = max(min(int(value, 255)), 1)
 
         if value != self.model.brightness:
             self.model.brightness = value

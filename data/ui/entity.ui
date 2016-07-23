@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="brightness-scale-adjustment">
+    <property name="lower">1</property>
+    <property name="upper">255</property>
+    <property name="step_increment">1</property>
+  </object>
   <object class="GtkPopover" id="color-chooser-popover">
     <property name="can_focus">False</property>
     <child>
@@ -26,28 +30,85 @@
                 <property name="can_focus">False</property>
                 <property name="rgba">rgb(85,87,83)</property>
                 <property name="show_editor">True</property>
+                <signal name="color-activated" handler="_on_color_activate" swapped="no"/>
               </object>
             </child>
           </object>
         </child>
-        <child type="label_item">
-          <placeholder/>
-        </child>
       </object>
     </child>
   </object>
-  <object class="GtkMenuButton" id="color-chooser-popover-button">
+  <object class="GtkBox" id="content-wrapper">
     <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">True</property>
-    <property name="popover">color-chooser-popover</property>
-    <signal name="toggled" handler="_on_color_toggle" swapped="no"/>
+    <property name="can_focus">False</property>
+    <property name="margin_start">6</property>
+    <property name="margin_end">6</property>
+    <property name="margin_top">6</property>
+    <property name="margin_bottom">6</property>
+    <property name="spacing">6</property>
+    <property name="hexpand">True</property>
     <child>
-      <object class="GtkImage">
+      <object class="GtkLabel" id="entity-name-label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="icon_name">applications-graphics</property>
+        <property name="use_underline">True</property>
+        <property name="xalign">0</property>
+        <property name="width-chars">15</property>
+        <property name="max-width-chars">15</property>
+        <property name="mnemonic_widget">entity-switch</property>
+        <property name="ellipsize">end</property>
       </object>
+      <packing>
+        <property name="fill">False</property>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkScale" id="brightness-scale">
+        <property name="adjustment">brightness-scale-adjustment</property>
+        <property name="digits">0</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="draw_value">False</property>
+        <property name="orientation">horizontal</property>
+        <property name="hexpand">True</property>
+        <signal name="change-value" handler="_on_brightness_scale_change" swapped="no"/>
+      </object>
+      <packing>
+        <property name="fill">True</property>
+        <property name="expand">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="color-chooser-popover-button">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="popover">color-chooser-popover</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="icon_name">applications-graphics</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="fill">False</property>
+        <property name="expand">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSwitch" id="entity-switch">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="halign">end</property>
+        <signal name="state-set" handler="_on_entity_switch_state_set" swapped="no"/>
+      </object>
+      <packing>
+        <property name="fill">False</property>
+        <property name="expand">False</property>
+      </packing>
     </child>
   </object>
 </interface>

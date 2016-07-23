@@ -46,7 +46,12 @@ class Window(Gtk.ApplicationWindow):
 
         self._on_connection_change()
 
+        geometry = Gdk.Geometry()
+        geometry.min_height = 450
+        geometry.min_width = 575
+        self.set_geometry_hints(None, geometry, Gdk.WindowHints.MIN_SIZE)
         self.set_titlebar(self.header_bar)
+
         self.add(self.main_content)
 
     def _on_connection_change(self):
