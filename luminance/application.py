@@ -44,8 +44,8 @@ class Application(Gtk.Application):
         )
 
         self.bridge = None
-        self.host = None
-        self.username = None
+        self.host = settings.get_string('host')
+        self.username = settings.get_string('username')
         self.window = None
 
     def do_startup(self):
@@ -116,14 +116,6 @@ class Application(Gtk.Application):
                 self.host,
                 username=username
             )
-        elif host:
-            self.bridge = phue.Bridge(
-                self.host
-            )
-        elif username:
-            self.bridge = phue.Bridge(
-                username=self.username
-            )
         else:
             self.bridge = phue.Bridge()
 
@@ -151,4 +143,8 @@ class Application(Gtk.Application):
         self.about_dialog.present()
 
     def _on_quit(self, action, param):
+        if self.bridge:
+            settings.set_string('host', self.bridge.ip)
+            settings.set_string('username', self.bridge.username)
+
         self.quit()
