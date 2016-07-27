@@ -11,8 +11,8 @@ from gi.repository import Gtk
 
 from .. import get_resource_path
 from .bridge import Bridge
+from .entity import FramedEntityList
 from .groups import Groups
-from .lights import Lights
 
 
 class Window(Gtk.ApplicationWindow):
@@ -36,7 +36,7 @@ class Window(Gtk.ApplicationWindow):
         self.main_stack = builder.get_object('main-stack')
 
         self.lights_page = builder.get_object('lights-page')
-        self.lights_page.add(Lights(self.bridge))
+        self.lights_page.add(FramedEntityList(self.bridge.get_light_objects('id').values()))
 
         self.groups_page = builder.get_object('groups-page')
         self.groups_page.add(Groups(self.bridge))

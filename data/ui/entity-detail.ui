@@ -40,7 +40,7 @@
     <property name="hscrollbar_policy">never</property>
     <property name="height_request">400</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="content">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_start">50</property>
@@ -49,7 +49,7 @@
         <property name="margin_bottom">12</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="name-entry-container">
               <property name="visible">True</property>
               <property name="can_focus">False</property>
               <property name="spacing">6</property>
@@ -71,8 +71,9 @@
               <child>
                 <object class="GtkEntry" id="name-entry">
                   <property name="visible">True</property>
-                  <property name="can_focus">True</property>
+                  <property name="can-focus">True</property>
                   <property name="hexpand">True</property>
+                  <property name="receives-default">False</property>
                 </object>
                 <packing>
                   <property name="pack_type">start</property>
@@ -82,7 +83,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkFrame" id="light-frame-wrapper">
+          <object class="GtkFrame" id="entity-frame-wrapper">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="shadow_type">in</property>
@@ -91,14 +92,14 @@
             <property name="label_yalign">0.45</property>
             <property name="shadow_type">none</property>
             <child>
-              <object class="GtkFrame" id="light-frame-wrapper-listbox">
+              <object class="GtkFrame" id="entity-frame-wrapper-listbox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkListBox" id="light-listbox">
+                  <object class="GtkListBox" id="entity-listbox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="selection_mode">none</property>
@@ -134,10 +135,10 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkSwitch" id="light-switch">
+                              <object class="GtkSwitch" id="entity-switch">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <signal name="state-set" handler="_on_light_switch_change" swapped="no"/>
+                                <signal name="state-set" handler="_on_entity_switch_change" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -171,7 +172,7 @@
                                 <property name="rgba">rgb(85,87,83)</property>
                                 <property name="show_editor">True</property>
                                 <property name="use_alpha">False</property>
-                                <signal name="color-activated" handler="_on_color_activate" swapped="no"/>
+                                <signal name="notify::rgba" handler="_on_color_activate" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">True</property>

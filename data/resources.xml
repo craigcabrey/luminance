@@ -4,10 +4,11 @@
     <file>ui/about.ui</file>
     <file>ui/bridge.ui</file>
     <file>ui/connect.ui</file>
-    <file>ui/entity.ui</file>
+    <file>ui/entity-detail.ui</file>
+    <file>ui/entity-list.ui</file>
+    <file>ui/entity-row.ui</file>
+    <file>ui/group-detail.ui</file>
     <file>ui/groups.ui</file>
-    <file>ui/light.ui</file>
-    <file>ui/lights.ui</file>
     <file>ui/main.ui</file>
     <file>ui/menu.ui</file>
     <file>ui/new-group.ui</file>
