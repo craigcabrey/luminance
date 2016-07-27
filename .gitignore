@@ -111,4 +111,5 @@ Makefile.in
 /py-compile
 /config.status
 
+bin/luminance
 luminance/__init__.py

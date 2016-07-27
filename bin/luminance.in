@@ -3,17 +3,25 @@
 import os
 import sys
 
-import gi
-
-gi.require_version('Gtk', '3.0')
-
-from gi.repository import Gtk
-
 if os.path.exists(os.path.join(os.path.dirname(__file__), '../luminance')):
     sys.path.insert(
         0,
         os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     )
+else:
+    pyexecdir = '@pyexecdir@'
+    pythondir = '@pythondir@'
+
+    sys.path.insert(0, pyexecdir)
+
+    if pyexecdir != pythondir:
+        sys.path.insert(0, pythondir)
+
+import gi
+
+gi.require_version('Gtk', '3.0')
+
+from gi.repository import Gtk
 
 from luminance.application import Application
 
