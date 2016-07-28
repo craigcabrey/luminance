@@ -13,6 +13,7 @@ import phue
 from . import __version__
 from . import get_resource_path
 from . import settings
+from .views.setup import Setup
 from .views.window import Window
 
 
@@ -54,13 +55,10 @@ class Application(Gtk.Application):
         builder = Gtk.Builder()
 
         builder.add_from_resource(get_resource_path('ui/about.ui'))
-        builder.add_from_resource(get_resource_path('ui/connect.ui'))
         builder.add_from_resource(get_resource_path('ui/menu.ui'))
 
         self.app_menu = builder.get_object('app-menu')
         self.about_dialog = builder.get_object('about-dialog')
-        self.connect_dialog = builder.get_object('connect-dialog')
-        self.hostname_entry = builder.get_object('hostname-entry')
 
         action = Gio.SimpleAction.new('connect', None)
         action.connect('activate', self._on_connect)
@@ -98,6 +96,17 @@ class Application(Gtk.Application):
 
         return 0
 
+    def _connect(self, host, username):
+        if host and username:
+            self.bridge = phue.Bridge(
+                self.host,
+                username=username
+            )
+
+            self._init()
+        else:
+            self._setup()
+
     def _init(self):
         if not self.window:
             self.window = Window(
@@ -110,39 +119,34 @@ class Application(Gtk.Application):
         self.window.show_all()
         self.window.present()
 
-    def _connect(self, host, username):
-        if host and username:
-            self.bridge = phue.Bridge(
-                self.host,
-                username=username
-            )
-        else:
-            self.bridge = phue.Bridge()
+    def _setup(self):
+        setup = Setup(application=self)
+        setup.connect('cancel', self._on_quit)
+        setup.connect('apply', self._setup_finished)
+        setup.show_all()
+        setup.present()
 
-        self.bridge.connect()
-
+    def _setup_finished(self, setup):
+        self.bridge = setup.bridge
+        setup.hide()
+        setup.destroy()
         self._init()
 
-        return True
+    def _on_connect(self, *args):
+        if self.window:
+            self.window.hide()
+            self.window.destroy()
 
-    def _on_connect(self, action, param):
-        self.connect_dialog.set_transient_for(self.window)
-        response = self.connect_dialog.run()
+        self._setup()
 
-        if Gtk.ResponseType.OK:
-            hostname = self.hostname_entry.get_text()
-            self._connect(hostname, None)
-
-        self.connect_dialog.hide()
-
-    def _on_about(self, action, param):
+    def _on_about(self, *args):
         self.about_dialog.set_logo_icon_name('luminance')
         self.about_dialog.set_version(__version__)
         self.about_dialog.set_transient_for(self.window)
         self.about_dialog.set_modal(True)
         self.about_dialog.present()
 
-    def _on_quit(self, action, param):
+    def _on_quit(self, *args):
         if self.bridge:
             settings.set_string('host', self.bridge.ip)
             settings.set_string('username', self.bridge.username)

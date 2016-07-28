@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/com/craigcabrey/luminance">
+    <file>icons/link_button.svg</file>
     <file>ui/about.ui</file>
     <file>ui/bridge.ui</file>
-    <file>ui/connect.ui</file>
     <file>ui/entity-detail.ui</file>
     <file>ui/entity-list.ui</file>
     <file>ui/entity-row.ui</file>
@@ -12,5 +12,6 @@
     <file>ui/main.ui</file>
     <file>ui/menu.ui</file>
     <file>ui/new-group.ui</file>
+    <file>ui/setup.ui</file>
   </gresource>
 </gresources>
