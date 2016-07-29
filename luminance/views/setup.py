@@ -69,6 +69,7 @@ class Setup(Gtk.Assistant):
                 target=self.search
             ).start()
         elif page == self.link_button_page:
+            self.link_button_page.set_visible_child_name('press-link-button')
             threading.Thread(
                 args=(self._on_connection_established,),
                 daemon=True,
@@ -181,8 +182,7 @@ class Setup(Gtk.Assistant):
         if self.bridge:
             self.emit('apply')
         else:
-            # TODO: Show error
-            pass
+            self.link_button_page.set_visible_child_name('unknown-error')
 
         return False
 
@@ -194,7 +194,9 @@ class Setup(Gtk.Assistant):
                 bridge = phue.Bridge(ip=self.selected_bridge['address'])
             except phue.PhueRegistrationException:
                 time.sleep(1)
-            except Exception as e:
+            except Exception:
+                import traceback
+                traceback.print_exc()
                 break
             else:
                 self.bridge = bridge
