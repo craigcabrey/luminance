@@ -6,8 +6,14 @@ Luminance is a Philips Hue client for Linux written in Python and GTK+.
 
 ## Features
 
-* Individually control lights (brightness, color, on/off)
-* Individually control groups (brightness, color, on/off)
+*Note*: The application is not release quality at this time. You will encounter
+build issues, bugs, and incomplete or non-working features. That said, please
+feel free to create an issue with your problem and I will do my best to triage
+it.
+
+* Individually control lights (brightness, color, on/off, effects)
+* Manage and control individual groups (brightness, color, on/off, effects)
+* Create new and modify existing groups (stored on the bridge, not on your computer)
 * Bridge information and management (rescan for lights, check for updates)
 
 ## Getting Started
@@ -18,13 +24,15 @@ Luminance is a Philips Hue client for Linux written in Python and GTK+.
 * Python 3.5 or later (earlier versions may work, but they haven't been tested)
 * GTK+ 3.20 or later (earlier versions may work, but they haven't been tested)
 * [phue](https://github.com/studioimaginaire/phue) 0.8 or later
+* [netdisco](https://github.com/home-assistant/netdisco) 0.7 or later
+* [requests](https://github.com/kennethreitz/requests) 2.10 or later
 * Hue bridge (tested with the first generation only)
 
 ### Installing
 
 1. Clone this repository.
 1. In the cloned repository, run `./autogen.sh`.
-1. If everything works, run `./configure && make && sudo make install`.
+1. If everything works, run `./configure --prefix=/usr && make && sudo make install`.
 
 ## License
 
