@@ -135,7 +135,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntryBuffer" id="manual-address-buffer"/>
+          <object class="GtkEntryBuffer" id="manual-address-buffer">
+            <signal name="inserted-text" handler="_on_manual_address_changed" swapped="no"/>
+            <signal name="deleted-text" handler="_on_manual_address_changed" swapped="no"/>
+          </object>
           <object class="GtkEntry">
             <property name="visible">True</property>
             <property name="can_focus">True</property>

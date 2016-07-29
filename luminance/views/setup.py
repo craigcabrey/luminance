@@ -77,10 +77,18 @@ class Setup(Gtk.Assistant):
             ).start()
 
     def _on_bridge_selected(self, list_box, row):
-        self.selected_bridge = self.available_bridges[row]
+        self.selected_bridge = self.available_bridges[row]['address']
 
     def _on_manual_clicked(self, *args):
         self.results_page.set_visible_child_name('manual')
+
+    def _on_manual_address_changed(self, entry_buffer, *args):
+        self.selected_bridge = entry_buffer.get_text()
+
+        if self.selected_bridge:
+            self.set_page_complete(self.results_page, True)
+        else:
+            self.set_page_complete(self.results_page, False)
 
     def _on_search_complete(self, results):
         if results:
@@ -120,7 +128,7 @@ class Setup(Gtk.Assistant):
             row = make_bridge_row(results[0])
             self.results_list.add(row)
             self.available_bridges[row] = results[0]
-            self.selected_bridge = results[0]
+            self.selected_bridge = results[0]['address']
 
             for result in results[1:]:
                 row = make_bridge_row(result)
@@ -191,7 +199,7 @@ class Setup(Gtk.Assistant):
 
         while True:
             try:
-                bridge = phue.Bridge(ip=self.selected_bridge['address'])
+                bridge = phue.Bridge(ip=self.selected_bridge)
             except phue.PhueRegistrationException:
                 time.sleep(1)
             except Exception:
