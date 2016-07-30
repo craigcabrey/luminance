@@ -12,10 +12,13 @@ from .. import get_resource_path
 from .entity import ListBoxRow
 from .group import AllGroupDetail
 from .group import GroupDetail
+from .group import NewGroup
 
 class Groups(Gtk.Box):
     def __init__(self, bridge, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.bridge = bridge
 
         builder = Gtk.Builder()
         builder.add_from_resource(get_resource_path('ui/groups.ui'))
@@ -24,8 +27,8 @@ class Groups(Gtk.Box):
         self.content = builder.get_object('content-wrapper')
         self.groups_list = builder.get_object('list')
 
-        self.groups_list.add(ListBoxRow(phue.AllLights(bridge)))
-        for group in bridge.groups:
+        self.groups_list.add(ListBoxRow(phue.AllLights(self.bridge)))
+        for group in self.bridge.groups:
             self.groups_list.add(ListBoxRow(group))
 
         self.add(self.content)
@@ -45,3 +48,16 @@ class Groups(Gtk.Box):
                 transient_for=self.get_toplevel(),
                 type_hint=Gdk.WindowTypeHint.DIALOG
             ).present()
+
+    def _on_new_group_clicked(self, *args):
+        dialog = NewGroup(
+            self.bridge,
+            transient_for=self.get_toplevel()
+        )
+
+        response = dialog.run()
+
+        if response == Gtk.ResponseType.APPLY:
+            self.bridge.create_group(dialog.name, dialog.lights)
+
+        dialog.destroy()

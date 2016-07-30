@@ -3,10 +3,8 @@
   <object class="GtkFrame" id="content-wrapper">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="shadow_type">in</property>
-    <property name="margin_top">12</property>
-    <property name="margin_bottom">12</property>
-    <property name="label_yalign">0.45</property>
+    <property name="margin_top">6</property>
+    <property name="margin_bottom">6</property>
     <property name="shadow_type">none</property>
     <child type="label">
       <object class="GtkLabel">
@@ -27,7 +25,7 @@
         <property name="margin_bottom">6</property>
         <property name="shadow_type">in</property>
         <child>
-          <object class="GtkListBox" id="light-listbox">
+          <object class="GtkListBox" id="light-list">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="selection_mode">none</property>

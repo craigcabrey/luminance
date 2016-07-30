@@ -55,6 +55,7 @@
                     <property name="use_action_appearance">False</property>
                     <property name="icon_name">list-add-symbolic</property>
                     <property name="label" translatable="yes">Add Group</property>
+                    <signal name="clicked" handler="_on_new_group_clicked" swapped="no"/>
                   </object>
                 </child>
               </object>
