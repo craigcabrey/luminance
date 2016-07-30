@@ -147,7 +147,10 @@ class Setup(Gtk.Assistant):
 
     def search(self, cb):
         try:
-            res = requests.get('https://www.meethue.com/api/nupnp')
+            data = requests.get('https://www.meethue.com/api/nupnp').json()
+
+            if not data:
+                raise ValueError('No bridges registered with Philips')
         except Exception:
             import urllib.parse
 
@@ -157,18 +160,18 @@ class Setup(Gtk.Assistant):
                 limit_discovery=['philips_hue']
             )
             network_discovery.scan()
-            data = [
+            results = [
                 {
                     'display': result[0],
                     'address': urllib.parse.urlparse(result[1]).hostname
                 } for result in network_discovery.get_info('philips_hue')
             ]
         else:
-            data = []
+            results = []
 
-            for result in res.json():
+            for result in data:
                 ip = result['internalipaddress']
-                res = requests.get('http://{0}/description.xml'.format(ip))
+                res = requests.get('http://{ip}/description.xml'.format(ip=ip))
 
                 name = [_ for _ in filter(
                     lambda line: 'friendlyName' in line,
@@ -182,9 +185,9 @@ class Setup(Gtk.Assistant):
                     .replace('<friendlyName>', '') \
                     .replace('</friendlyName>', '')
 
-                data.append({'display': name, 'address': ip})
+                results.append({'display': name, 'address': ip})
         finally:
-            GLib.idle_add(cb, data)
+            GLib.idle_add(cb, results)
 
     def _on_connection_established(self):
         if self.bridge:
