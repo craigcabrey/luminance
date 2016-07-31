@@ -3,6 +3,7 @@ views_PYTHON = bridge.py \
                group.py  \
                groups.py \
                light.py  \
+               setup.py   \
                util.py   \
                window.py
 
