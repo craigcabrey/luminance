@@ -55,13 +55,15 @@ class ListBoxRow(Gtk.ListBoxRow):
             entity_name_label.set_text(self.model.name)
 
         self.color_chooser = builder.get_object('color-chooser')
-        self.color_chooser.set_rgba(
-            hsv_to_gdk_rgb(
-                self.model.hue,
-                self.model.saturation,
-                self.model.brightness
+
+        if self.model.on:
+            self.color_chooser.set_rgba(
+                hsv_to_gdk_rgb(
+                    self.model.hue,
+                    self.model.saturation,
+                    self.model.brightness
+                )
             )
-        )
 
         self.brightness_scale = builder.get_object('brightness-scale')
         self.brightness_scale.set_value(self.model.brightness)
