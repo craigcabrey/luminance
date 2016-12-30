@@ -1,6 +1,7 @@
 SUBDIRS = views
 
 BUILT_SOURCES = __init__.py
+EXTRA_DIST = __init__.py.in
 
 luminancedir = $(pkgpythondir)
 
